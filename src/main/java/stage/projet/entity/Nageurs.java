@@ -23,14 +23,19 @@ public class Nageurs {
     private String prenomNag;
 
     private Date dateNaiss;
+    //relation OnetoMany avec la classe Club
+    @ManyToOne
+    @JoinColumn(name = "club_id")
+    private Club club;
+    //relation ManytoMany avec la classe Compétition
     @ManyToMany(cascade= CascadeType.ALL)
     @JoinTable(
             name = "PARTICIPER",
             joinColumns = @JoinColumn(name = "ID_NAGEUR"),
             inverseJoinColumns = @JoinColumn(name="ID_COMPETITION")
     )
-    private List<competition> ListCompet = new ArrayList<>();
-    public void  ajoutCompetition(competition c){ListCompet.add(c);}
+    private List<competition> listCompet = new ArrayList<>();
+    public void  ajoutCompetition(competition c){listCompet.add(c);}
 
 
 }
