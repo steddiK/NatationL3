@@ -4,25 +4,33 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.transaction.Transactional;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
-@Table(name= "nageurs")
+@Transactional
+@Setter
+@Getter
+@Table(name= "NAGEURS")
 public class Nageurs {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idNag;
-
-    @Getter
-    @Setter
     private String nomNag;
 
-    @Getter
-    @Setter
     private String prenomNag;
 
-    @Getter
-    @Setter
     private Date dateNaiss;
+    @ManyToMany(cascade= CascadeType.ALL)
+    @JoinTable(
+            name = "PARTICIPER",
+            joinColumns = @JoinColumn(name = "ID_NAGEUR"),
+            inverseJoinColumns = @JoinColumn(name="ID_COMPETITION")
+    )
+    private List<competition> ListCompet = new ArrayList<>();
+    public void  ajoutCompetition(competition c){ListCompet.add(c);}
+
 
 }
