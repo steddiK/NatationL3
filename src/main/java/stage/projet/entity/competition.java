@@ -7,6 +7,8 @@ import javax.persistence.*;
 import javax.persistence.Table;
 import javax.transaction.Transactional;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Transactional
@@ -26,4 +28,15 @@ public class competition {
     private int rang;
     private Date date;
     private String heure;
+    @ManyToMany(cascade= CascadeType.ALL)
+    @JoinTable(
+            name= "PARTICIPER",
+            joinColumns = @JoinColumn(name="ID_COMPETITION"),
+            inverseJoinColumns = @JoinColumn(name = "ID_NAGEUR")
+    )
+    private List<Nageurs> listNageur = new ArrayList<>();
+
+    public void ajoutNageurs(Nageurs n){
+        listNageur.add(n);
+    }
 }
