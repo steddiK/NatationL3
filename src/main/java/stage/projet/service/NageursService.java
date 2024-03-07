@@ -22,7 +22,7 @@ public class NageursService {
     public void créerN(Nageurs n){
         this.nageurR.save(n);
     }
-    public List<Nageurs> rechercherN(){
+    public List<Nageurs> rechercherAll(){
         return this.nageurR.findAll();
     }
 }
