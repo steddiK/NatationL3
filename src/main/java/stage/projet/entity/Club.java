@@ -14,9 +14,11 @@ public class Club {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int idClub;
+
     @Setter
     @Getter
     private String NomClub;
+
     @Setter
     @Getter
     private int TelClub;
