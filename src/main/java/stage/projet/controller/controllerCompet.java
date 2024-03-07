@@ -14,7 +14,7 @@ import java.util.List;
 public class controllerCompet {
    @Autowired
    private final CompetitionService competS;
-   @GetMapping("/")
+   @GetMapping("/compet")
    public String welcome(){
        return "controllerCompet";
    }
@@ -28,7 +28,7 @@ public class controllerCompet {
        return "Competition enregistrée avec succes!";
    }
 
-   @GetMapping("/rechercher")
+   @GetMapping("/rechercherCompet")
     public List<competition> recherche(){
        return this.competS.rechercheAll();
    }
