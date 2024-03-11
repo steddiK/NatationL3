@@ -8,6 +8,7 @@ import stage.projet.service.NageursService;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("")
 public class controllerNageurs {
     @Autowired
